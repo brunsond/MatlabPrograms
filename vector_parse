@@ -14,7 +14,7 @@ function vector_parse(v)  %v is input vector
 
 n = length(v);
 
-if length(v) <= 4
+if n <= 4
     M = reshape(v,n,1);
     fprintf('[')
     fprintf('%.20g,&\n',M(1:(end-1)))
