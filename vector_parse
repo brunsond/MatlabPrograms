@@ -17,7 +17,9 @@ n = length(v);
 
 if length(v) <= 4
     M = reshape(v,n,1);
-    fprintf('%.20g,&\n',M)
+    fprintf('[')
+    fprintf('%.20g,&\n',M(1:(end-1)))
+    fprintf('%0.20g]\n',M(end))
 else
     if mod(n,3)==0  % Number of elements of v is divisible by 3.
         M = reshape(v,n/3,3);
