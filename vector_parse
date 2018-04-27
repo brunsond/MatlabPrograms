@@ -8,6 +8,9 @@
 % to the user's specification, parses it with commas and & where needed, and prints it
 % to the Matlab command window.  The user may then easily cut and paste the vector into Fortran.
 
+% Adapted from gariepy answer to question on stack overflow:
+% https://stackoverflow.com/questions/37739899/how-to-separate-the-elements-of-a-matrix-with-comma-in-matlab
+
 function vector_parse(v)  %v is input vector
 
 n = length(v);
