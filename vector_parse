@@ -4,8 +4,7 @@
 % be comma-delimited, and continuing to define the array to the next line requires the & 
 % at the end of the previous line.  
 
-% This program takes in a vector, reshapes it
-% to the user's specification, parses it with commas and & where needed, and prints it
+% This program takes in a vector, reshapes it, parses it with commas and & where needed, and prints it
 % to the Matlab command window.  The user may then easily cut and paste the vector into Fortran.
 
 % Adapted from gariepy answer to question on stack overflow:
@@ -24,7 +23,7 @@ else
     if mod(n,3)==0  % Number of elements of v is divisible by 3.
         M = reshape(v,n/3,3);
         fprintf('[')
-        fprintf('%.20g,%0.20g,%0.20g,&\n',M(1:(end-3),:))
+        fprintf('%.20g,%0.20g,%0.20g,&\n',M(1:(end-3),:))   %Vector continues to next line every three values.
         fprintf('%.20g,%0.20g,%0.20g]\n',M(end,:))
     else
         numrows = floor(n/3);
