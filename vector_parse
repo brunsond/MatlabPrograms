@@ -14,29 +14,34 @@ function vector_parse(v)  %v is input vector
 
 n = length(v);
 
-if n <= 4
-    M = reshape(v,n,1);
-    fprintf('[')
-    fprintf('%.20g,&\n',M(1:(end-1)))
-    fprintf('%0.20g]\n',M(end))
+if n == 1
+    fprintf('[%0.20g]\n',v)
 else
-    if mod(n,3)==0  % Number of elements of v is divisible by 3.
-        M = reshape(v,n/3,3);
+    if length(v) <= 4
+        M = reshape(v,n,1);
         fprintf('[')
-        fprintf('%.20g,%0.20g,%0.20g,&\n',M(1:(end-3),:))   %Vector continues to next line every three values.
-        fprintf('%.20g,%0.20g,%0.20g]\n',M(end,:))
+        fprintf('%.20g,&\n',M(1:(end-1)))
+        fprintf('%.20g]\n',M(end))
     else
-        numrows = floor(n/3);
-        M = reshape(v(1:numrows*3),numrows,3);
-        fprintf('[')
-        fprintf('%.20g,%0.20g,%0.20g,&\n',M)    %Vector continues to next line every three values.
-        R = v(numrows*3+1:end);  %Remainder of vector.
-        if length(R) == 1
-            fprintf('%0.20g]\n',R)
+        if mod(n,3)==0  % Number of elements of v is divisible by 3.
+            M = reshape(v,n/3,3);
+            fprintf('[')
+            fprintf('%.20g,%0.20g,%0.20g,&\n',M(1:(end-3),:))   %Vector continues to next line every three values.
+            fprintf('%.20g,%0.20g,%0.20g]\n',M(end,:))
         else
-            fprintf('%0.20g,%0.20g]\n',R)
+            numrows = floor(n/3);
+            M = reshape(v(1:numrows*3),numrows,3);
+            fprintf('[')
+            fprintf('%.20g,%0.20g,%0.20g,&\n',M)    %Vector continues to next line every three values.
+            R = v(numrows*3+1:end);  %Remainder of vector.
+            if length(R) == 1
+                fprintf('%0.20g]\n',R)
+            else
+                fprintf('%0.20g,%0.20g]\n',R)
+            end
         end
     end
+end
     
 end
 
