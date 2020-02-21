@@ -1,5 +1,5 @@
 function [U,L] = UL(A)
-
+%UL factorisation of matrix A.
 n = length(A(:,1));
 U = zeros(n,n);
 for k = n:-1:2
